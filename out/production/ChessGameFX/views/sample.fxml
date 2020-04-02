@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
+   <children>
+      <Pane>
+         <children>
+            <Rectangle fx:id="rect00" fill="WHITE" height="70.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect10" fill="#bbbbbb" height="70.0" layoutX="70.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect20" fill="WHITE" height="70.0" layoutX="140.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect30" fill="#bbbbbb" height="70.0" layoutX="210.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect40" fill="WHITE" height="70.0" layoutX="280.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect50" fill="#bbbbbb" height="70.0" layoutX="350.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect60" fill="WHITE" height="70.0" layoutX="420.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect70" fill="#bbbbbb" height="70.0" layoutX="490.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect71" fill="WHITE" height="70.0" layoutX="490.0" layoutY="70.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect01" fill="#bbbbbb" height="70.0" layoutY="70.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect11" fill="WHITE" height="70.0" layoutX="70.0" layoutY="70.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect21" fill="#bbbbbb" height="70.0" layoutX="140.0" layoutY="70.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect31" fill="WHITE" height="70.0" layoutX="210.0" layoutY="70.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect41" fill="#bbbbbb" height="70.0" layoutX="280.0" layoutY="70.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect51" fill="WHITE" height="70.0" layoutX="350.0" layoutY="70.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect61" fill="#bbbbbb" height="70.0" layoutX="420.0" layoutY="70.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect02" fill="WHITE" height="70.0" layoutY="140.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect12" fill="#bbbbbb" height="70.0" layoutX="70.0" layoutY="140.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect22" fill="WHITE" height="70.0" layoutX="140.0" layoutY="140.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect32" fill="#bbbbbb" height="70.0" layoutX="210.0" layoutY="140.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect42" fill="WHITE" height="70.0" layoutX="280.0" layoutY="140.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect52" fill="#bbbbbb" height="70.0" layoutX="350.0" layoutY="140.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect62" fill="WHITE" height="70.0" layoutX="420.0" layoutY="140.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect72" fill="#bbbbbb" height="70.0" layoutX="490.0" layoutY="140.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect73" fill="WHITE" height="70.0" layoutX="490.0" layoutY="210.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect03" fill="#bbbbbb" height="70.0" layoutY="210.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect13" fill="WHITE" height="70.0" layoutX="70.0" layoutY="210.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect23" fill="#bbbbbb" height="70.0" layoutX="140.0" layoutY="210.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect33" fill="WHITE" height="70.0" layoutX="210.0" layoutY="210.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect43" fill="#bbbbbb" height="70.0" layoutX="280.0" layoutY="210.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect53" fill="WHITE" height="70.0" layoutX="350.0" layoutY="210.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect63" fill="#bbbbbb" height="70.0" layoutX="420.0" layoutY="210.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect04" fill="WHITE" height="70.0" layoutY="280.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect14" fill="#bbbbbb" height="70.0" layoutX="70.0" layoutY="280.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect24" fill="WHITE" height="70.0" layoutX="140.0" layoutY="280.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect34" fill="#bbbbbb" height="70.0" layoutX="210.0" layoutY="280.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect44" fill="WHITE" height="70.0" layoutX="280.0" layoutY="280.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect54" fill="#bbbbbb" height="70.0" layoutX="350.0" layoutY="280.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect64" fill="WHITE" height="70.0" layoutX="420.0" layoutY="280.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect74" fill="#bbbbbb" height="70.0" layoutX="490.0" layoutY="280.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect75" fill="WHITE" height="70.0" layoutX="490.0" layoutY="350.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect05" fill="#bbbbbb" height="70.0" layoutY="350.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect15" fill="WHITE" height="70.0" layoutX="70.0" layoutY="350.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect25" fill="#bbbbbb" height="70.0" layoutX="140.0" layoutY="350.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect35" fill="WHITE" height="70.0" layoutX="210.0" layoutY="350.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect45" fill="#bbbbbb" height="70.0" layoutX="280.0" layoutY="350.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect55" fill="WHITE" height="70.0" layoutX="350.0" layoutY="350.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect65" fill="#bbbbbb" height="70.0" layoutX="420.0" layoutY="350.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect06" fill="WHITE" height="70.0" layoutY="420.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect16" fill="#bbbbbb" height="70.0" layoutX="70.0" layoutY="420.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect26" fill="WHITE" height="70.0" layoutX="140.0" layoutY="420.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect36" fill="#bbbbbb" height="70.0" layoutX="210.0" layoutY="420.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect46" fill="WHITE" height="70.0" layoutX="280.0" layoutY="420.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect56" fill="#bbbbbb" height="70.0" layoutX="350.0" layoutY="420.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect66" fill="WHITE" height="70.0" layoutX="420.0" layoutY="420.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect76" fill="#bbbbbb" height="70.0" layoutX="490.0" layoutY="420.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect77" fill="WHITE" height="70.0" layoutX="490.0" layoutY="490.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect07" fill="#bbbbbb" height="70.0" layoutY="490.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect17" fill="WHITE" height="70.0" layoutX="70.0" layoutY="490.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect27" fill="#bbbbbb" height="70.0" layoutX="140.0" layoutY="490.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect37" fill="WHITE" height="70.0" layoutX="210.0" layoutY="490.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect47" fill="#bbbbbb" height="70.0" layoutX="280.0" layoutY="490.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect57" fill="WHITE" height="70.0" layoutX="350.0" layoutY="490.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+            <Rectangle fx:id="rect67" fill="#bbbbbb" height="70.0" layoutX="420.0" layoutY="490.0" stroke="#555555" strokeType="INSIDE" width="70.0" />
+         </children>
+      </Pane>
+      <Group>
+         <children>
+            <ImageView fx:id="blackRoof1" fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackRook.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackKnight1" fitHeight="50.0" fitWidth="50.0" layoutX="80.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackKnight.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackBishop1" fitHeight="50.0" fitWidth="50.0" layoutX="150.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackBishop.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackQueen" fitHeight="50.0" fitWidth="50.0" layoutX="220.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackQueen.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackKing" fitHeight="50.0" fitWidth="50.0" layoutX="290.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackKing.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackBishop2" fitHeight="50.0" fitWidth="50.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackBishop.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackKnight2" fitHeight="50.0" fitWidth="50.0" layoutX="430.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackKnight.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackRoof2" fitHeight="50.0" fitWidth="50.0" layoutX="500.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackRook.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackPawn1" fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackPawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackPawn2" fitHeight="50.0" fitWidth="50.0" layoutX="80.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackPawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackPawn3" fitHeight="50.0" fitWidth="50.0" layoutX="150.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackPawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackPawn4" fitHeight="50.0" fitWidth="50.0" layoutX="220.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackPawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackPawn5" fitHeight="50.0" fitWidth="50.0" layoutX="290.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackPawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackPawn6" fitHeight="50.0" fitWidth="50.0" layoutX="360.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackPawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackPawn7" fitHeight="50.0" fitWidth="50.0" layoutX="430.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackPawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blackPawn8" fitHeight="50.0" fitWidth="50.0" layoutX="500.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/blackPawn.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+      <Group>
+         <children>
+            <ImageView fx:id="whitePawn1" fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whitePawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whitePawn2" fitHeight="50.0" fitWidth="50.0" layoutX="80.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whitePawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whitePawn3" fitHeight="50.0" fitWidth="50.0" layoutX="150.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whitePawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whitePawn4" fitHeight="50.0" fitWidth="50.0" layoutX="220.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whitePawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whitePawn5" fitHeight="50.0" fitWidth="50.0" layoutX="290.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whitePawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whitePawn6" fitHeight="50.0" fitWidth="50.0" layoutX="360.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whitePawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whitePawn7" fitHeight="50.0" fitWidth="50.0" layoutX="430.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whitePawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whitePawn8" fitHeight="50.0" fitWidth="50.0" layoutX="500.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whitePawn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whiteRoof1" fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whiteRook.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whiteKnight1" fitHeight="50.0" fitWidth="50.0" layoutX="80.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whiteKnight.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whiteBishop1" fitHeight="50.0" fitWidth="50.0" layoutX="150.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whiteBishop.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whiteQueen" fitHeight="50.0" fitWidth="50.0" layoutX="220.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whiteQueen.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whiteKing" fitHeight="50.0" fitWidth="50.0" layoutX="290.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whiteKing.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whiteBishop2" fitHeight="50.0" fitWidth="50.0" layoutX="360.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whiteBishop.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whiteKnight2" fitHeight="50.0" fitWidth="50.0" layoutX="430.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whiteKnight.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="whiteRoof2" fitHeight="50.0" fitWidth="50.0" layoutX="500.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@chessSheets/whiteRook.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+   </children>
+</AnchorPane>
