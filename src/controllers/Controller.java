@@ -6,9 +6,9 @@ import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-import views.ListPieces;
+import views.Pieces;
+import views.TypePiece;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,64 +32,110 @@ public class Controller implements Initializable {
     private Rectangle rect60, rect61, rect62, rect63, rect64, rect65, rect66, rect67, rect70, rect71, rect72, rect73, rect74, rect75, rect76, rect77;
     @FXML
     private Group allPieces;
+    @FXML
+    private Rectangle rectPoint;
+
+    private Rectangle[] board;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        ImageView[] listPieces = new ImageView[]{whitePawn1, whitePawn2, whitePawn3, whitePawn4, whitePawn5, whitePawn6, whitePawn7, whitePawn8,
-                blackPawn1, blackPawn2, blackPawn3, blackPawn4, blackPawn5, blackPawn6, blackPawn7, blackPawn8,
-                whiteRoof1, whiteRoof2, blackRoof1, blackRoof2, whiteKnight1, whiteKnight2, blackKnight1, blackKnight2,
-                whiteBishop1, whiteBishop2, blackBishop1, blackBishop2, whiteQueen, blackQueen, whiteKing, blackKing
-        };
+        rectPoint.setVisible(false);
 
-        Rectangle[] board = new Rectangle[]{rect00, rect01, rect02, rect03, rect04, rect05, rect06, rect07,
-                rect10, rect11, rect12, rect13, rect14, rect15, rect16, rect17,
-                rect20, rect21, rect22, rect23, rect24, rect25, rect26, rect27,
-                rect30, rect31, rect32, rect33, rect34, rect35, rect36, rect37,
-                rect40, rect41, rect42, rect43, rect44, rect45, rect46, rect47,
-                rect50, rect51, rect52, rect53, rect54, rect55, rect56, rect57,
-                rect60, rect61, rect62, rect63, rect64, rect65, rect66, rect67,
-                rect70, rect71, rect72, rect73, rect74, rect75, rect76, rect77};
+        Pieces bRoof1 = new Pieces("Black Roof 1", blackRoof1, false, 0, 0, TypePiece.ROOF);
+        Pieces bRoof2 = new Pieces("Black Roof 2", blackRoof2, false, 7, 0, TypePiece.ROOF);
+        Pieces bKnight1 = new Pieces("Black Knight 1", blackKnight1, false, 1, 0, TypePiece.KNIGHT);
+        Pieces bKnight2 = new Pieces("Black Knight 2", blackKnight2, false, 6, 0, TypePiece.KNIGHT);
+        Pieces bBishop1 = new Pieces("Black Bishop 2", blackBishop1, false, 2, 0, TypePiece.BISHOP);
+        Pieces bBishop2 = new Pieces("Black Bishop 2", blackBishop2, false, 5, 0, TypePiece.BISHOP);
+        Pieces bQueen = new Pieces("Black Queen", blackQueen, false, 3, 0, TypePiece.QUEEN);
+        Pieces bKing = new Pieces("Black King", blackKing, false, 4, 0, TypePiece.KING);
 
-        for (ImageView piece : listPieces) {
-            ListPieces.addPieces(piece);
-            piece.setOnMouseDragged(this::movePiece);
+        Pieces wRoof1 = new Pieces("White Roof 1", whiteRoof1, true, 0, 7, TypePiece.ROOF);
+        Pieces wRoof2 = new Pieces("White Roof 2", whiteRoof2, true, 7, 7, TypePiece.ROOF);
+        Pieces wKnight1 = new Pieces("White Knight 1", whiteKnight1, true, 1, 7, TypePiece.KNIGHT);
+        Pieces wKnight2 = new Pieces("White Knight 2", whiteKnight2, true, 6, 7, TypePiece.KNIGHT);
+        Pieces wBishop1 = new Pieces("White Bishop 2", whiteBishop1, true, 2, 7, TypePiece.BISHOP);
+        Pieces wBishop2 = new Pieces("White Bishop 2", whiteBishop2, true, 5, 7, TypePiece.BISHOP);
+        Pieces wQueen = new Pieces("White Queen", whiteQueen, true, 3, 7, TypePiece.QUEEN);
+        Pieces wKing = new Pieces("White King", whiteKing, true, 4, 7, TypePiece.KING);
+
+        Pieces bPawn1 = new Pieces("Black Pawn 1", blackPawn1, false, 0, 1, TypePiece.BLACK_PAWN);
+        Pieces bPawn2 = new Pieces("Black Pawn 2", blackPawn2, false, 1, 1, TypePiece.BLACK_PAWN);
+        Pieces bPawn3 = new Pieces("Black Pawn 3", blackPawn3, false, 2, 1, TypePiece.BLACK_PAWN);
+        Pieces bPawn4 = new Pieces("Black Pawn 4", blackPawn4, false, 3, 1, TypePiece.BLACK_PAWN);
+        Pieces bPawn5 = new Pieces("Black Pawn 5", blackPawn5, false, 4, 1, TypePiece.BLACK_PAWN);
+        Pieces bPawn6 = new Pieces("Black Pawn 6", blackPawn6, false, 5, 1, TypePiece.BLACK_PAWN);
+        Pieces bPawn7 = new Pieces("Black Pawn 7", blackPawn7, false, 6, 1, TypePiece.BLACK_PAWN);
+        Pieces bPawn8 = new Pieces("Black Pawn 8", blackPawn8, false, 7, 1, TypePiece.BLACK_PAWN);
+
+        Pieces wPawn1 = new Pieces("White Pawn 1", whitePawn1, true, 0, 6, TypePiece.WHITE_PAWN);
+        Pieces wPawn2 = new Pieces("White Pawn 2", whitePawn2, true, 1, 6, TypePiece.WHITE_PAWN);
+        Pieces wPawn3 = new Pieces("White Pawn 3", whitePawn3, true, 2, 6, TypePiece.WHITE_PAWN);
+        Pieces wPawn4 = new Pieces("White Pawn 4", whitePawn4, true, 3, 6, TypePiece.WHITE_PAWN);
+        Pieces wPawn5 = new Pieces("White Pawn 5", whitePawn5, true, 4, 6, TypePiece.WHITE_PAWN);
+        Pieces wPawn6 = new Pieces("White Pawn 6", whitePawn6, true, 5, 6, TypePiece.WHITE_PAWN);
+        Pieces wPawn7 = new Pieces("White Pawn 7", whitePawn7, true, 6, 6, TypePiece.WHITE_PAWN);
+        Pieces wPawn8 = new Pieces("White Pawn 8", whitePawn8, true, 7, 6, TypePiece.WHITE_PAWN);
+
+        board = new Rectangle[]{rect00, rect02, rect04, rect06, rect11, rect13, rect15, rect17, rect20, rect22, rect24, rect26, rect31, rect33, rect35, rect37, rect40, rect42, rect44, rect46, rect51, rect53, rect55, rect57, rect60, rect62, rect64, rect66, rect71, rect73, rect75, rect77,
+                rect01, rect03, rect05, rect07, rect10, rect12, rect14, rect16, rect21, rect23, rect25, rect27, rect30, rect32, rect34, rect36, rect41, rect43, rect45, rect47, rect50, rect52, rect54, rect56, rect61, rect63, rect65, rect67, rect70, rect72, rect74, rect76};
+
+        unsubSquare();
+
+        for (Pieces piece : Pieces.getPiecesList()) {
+            piece.getImageView().setOnMouseDragged(e -> movePiece(e, piece));
         }
+    }
 
+    private void subSquare(int x, int y) {
         for (Rectangle square : board) {
-            square.setOnMouseEntered(this::subSquare);
+            //System.out.println(x + "-" + y);
+            if (x * 70 == square.getLayoutX() && y * 70 == square.getLayoutY()) {
+                square.setFill(Color.LIGHTSALMON);
+            }
         }
     }
-    /*
-    public ImageView getPiece(ImageView piece){
-        return piece;
-    }
-     */
 
-    private void subSquare(MouseEvent e) {
-        Rectangle square = (Rectangle) e.getTarget();
-        Paint oldColor = square.getFill();
-        square.setFill(Color.DARKSLATEGRAY);
-        square.setOnMouseExited(ev -> desubSquare(e, oldColor));
+    private void unsubSquare() {
+        for (int i = 0; i < board.length/2; i++) {
+            board[i].setFill(Color.WHITE);
+        }
+        for (int i = 32; i < board.length; i++) {
+            board[i].setFill(Color.LIGHTGREY);
+        }
     }
 
-    private void desubSquare(MouseEvent e, Paint fill) {
-        Rectangle square = (Rectangle) e.getTarget();
-        square.setFill(fill);
+    private void movePiece(MouseEvent e, Pieces piece) {
+        ImageView selectedPiece = piece.getImageView();
+        selectedPiece.toFront();
+        selectedPiece.setX(e.getX() - 25);
+        selectedPiece.setY(e.getY() - 25);
+        selectedPiece.setOnMouseClicked(ev -> placePiece(ev, piece));
+        rectPoint.setVisible(true);
+        if (((e.getSceneX() - 35) / 70) * 70 != rectPoint.getLayoutX() && ((e.getSceneY() - 35) / 70) * 70 != rectPoint.getLayoutY()) {
+            rectPoint.setLayoutX(Math.round((e.getSceneX() - 35) / 70) * 70);
+            rectPoint.setLayoutY(Math.round((e.getSceneY() - 35) / 70) * 70);
+        }
+        for (double position : piece.getPossibleMove()) {
+            subSquare((int) position, (int) ((position * 10) - ((int) position * 10)));
+        }
     }
 
-    private void movePiece(MouseEvent e) {
-        ImageView piece = (ImageView) e.getTarget();
-        piece.toFront();
-        piece.setX(e.getX() - 25);
-        piece.setY(e.getY() - 25);
-        piece.setOnMouseClicked(this::placePiece);
-        rect44.setOnMouseEntered(this::subSquare);
+    private void placePiece(MouseEvent e, Pieces piece) {
+        rectPoint.setVisible(false);
+        piece.changePosition(e.getSceneX(), e.getSceneY());
+        allPieces.getChildren().remove(isPieceInSameCase(piece));
+        unsubSquare();
     }
 
-    private void placePiece(MouseEvent e) {
-        ImageView piece = (ImageView) e.getTarget();
-        piece.relocate(Math.floor(e.getSceneX() / 70) * 70 + 10, Math.floor(e.getSceneY() / 70) * 70 + 10);
-        allPieces.getChildren().remove(ListPieces.isPiece(piece, (int) Math.floor(e.getSceneX() / 70), (int) Math.floor(e.getSceneY() / 70)));
+    private ImageView isPieceInSameCase(Pieces selectedPiece) {
+        for (Pieces piece : Pieces.getPiecesList()) {
+            if (piece.getPositionX() == selectedPiece.getPositionX() && piece.getPositionY() == selectedPiece.getPositionY() && selectedPiece != piece) {
+                Pieces.removePiece(piece);
+                return piece.getImageView();
+            }
+        }
+        return null;
     }
 }
