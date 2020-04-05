@@ -3,10 +3,12 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import views.Chrono;
 import views.Pieces;
 import views.TypePiece;
 
@@ -34,49 +36,62 @@ public class Controller implements Initializable {
     private Group allPieces;
     @FXML
     private Rectangle rectPoint;
+    @FXML
+    private Label player;
 
     private Rectangle[] board;
 
+    private boolean isPlayerWhiteTurn;
+
+    private Chrono timerWhite;
+    private Chrono timerBlack;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        isPlayerWhiteTurn = true;
         rectPoint.setVisible(false);
 
-        Pieces bRoof1 = new Pieces("Black Roof 1", blackRoof1, false, 0, 0, TypePiece.ROOF);
-        Pieces bRoof2 = new Pieces("Black Roof 2", blackRoof2, false, 7, 0, TypePiece.ROOF);
-        Pieces bKnight1 = new Pieces("Black Knight 1", blackKnight1, false, 1, 0, TypePiece.KNIGHT);
-        Pieces bKnight2 = new Pieces("Black Knight 2", blackKnight2, false, 6, 0, TypePiece.KNIGHT);
-        Pieces bBishop1 = new Pieces("Black Bishop 2", blackBishop1, false, 2, 0, TypePiece.BISHOP);
-        Pieces bBishop2 = new Pieces("Black Bishop 2", blackBishop2, false, 5, 0, TypePiece.BISHOP);
-        Pieces bQueen = new Pieces("Black Queen", blackQueen, false, 3, 0, TypePiece.QUEEN);
-        Pieces bKing = new Pieces("Black King", blackKing, false, 4, 0, TypePiece.KING);
+        timerWhite = new Chrono();
+        timerBlack = new Chrono();
+        timerWhite.start();
+        timerBlack.start();
+        timerBlack.pause();
 
-        Pieces wRoof1 = new Pieces("White Roof 1", whiteRoof1, true, 0, 7, TypePiece.ROOF);
-        Pieces wRoof2 = new Pieces("White Roof 2", whiteRoof2, true, 7, 7, TypePiece.ROOF);
-        Pieces wKnight1 = new Pieces("White Knight 1", whiteKnight1, true, 1, 7, TypePiece.KNIGHT);
-        Pieces wKnight2 = new Pieces("White Knight 2", whiteKnight2, true, 6, 7, TypePiece.KNIGHT);
-        Pieces wBishop1 = new Pieces("White Bishop 2", whiteBishop1, true, 2, 7, TypePiece.BISHOP);
-        Pieces wBishop2 = new Pieces("White Bishop 2", whiteBishop2, true, 5, 7, TypePiece.BISHOP);
-        Pieces wQueen = new Pieces("White Queen", whiteQueen, true, 3, 7, TypePiece.QUEEN);
-        Pieces wKing = new Pieces("White King", whiteKing, true, 4, 7, TypePiece.KING);
+        new Pieces("Black Roof 1", blackRoof1, false, 0, 0, TypePiece.ROOF);
+        new Pieces("Black Roof 2", blackRoof2, false, 7, 0, TypePiece.ROOF);
+        new Pieces("Black Knight 1", blackKnight1, false, 1, 0, TypePiece.KNIGHT);
+        new Pieces("Black Knight 2", blackKnight2, false, 6, 0, TypePiece.KNIGHT);
+        new Pieces("Black Bishop 2", blackBishop1, false, 2, 0, TypePiece.BISHOP);
+        new Pieces("Black Bishop 2", blackBishop2, false, 5, 0, TypePiece.BISHOP);
+        new Pieces("Black Queen", blackQueen, false, 3, 0, TypePiece.QUEEN);
+        new Pieces("Black King", blackKing, false, 4, 0, TypePiece.KING);
 
-        Pieces bPawn1 = new Pieces("Black Pawn 1", blackPawn1, false, 0, 1, TypePiece.BLACK_PAWN);
-        Pieces bPawn2 = new Pieces("Black Pawn 2", blackPawn2, false, 1, 1, TypePiece.BLACK_PAWN);
-        Pieces bPawn3 = new Pieces("Black Pawn 3", blackPawn3, false, 2, 1, TypePiece.BLACK_PAWN);
-        Pieces bPawn4 = new Pieces("Black Pawn 4", blackPawn4, false, 3, 1, TypePiece.BLACK_PAWN);
-        Pieces bPawn5 = new Pieces("Black Pawn 5", blackPawn5, false, 4, 1, TypePiece.BLACK_PAWN);
-        Pieces bPawn6 = new Pieces("Black Pawn 6", blackPawn6, false, 5, 1, TypePiece.BLACK_PAWN);
-        Pieces bPawn7 = new Pieces("Black Pawn 7", blackPawn7, false, 6, 1, TypePiece.BLACK_PAWN);
-        Pieces bPawn8 = new Pieces("Black Pawn 8", blackPawn8, false, 7, 1, TypePiece.BLACK_PAWN);
+        new Pieces("White Roof 1", whiteRoof1, true, 0, 7, TypePiece.ROOF);
+        new Pieces("White Roof 2", whiteRoof2, true, 7, 7, TypePiece.ROOF);
+        new Pieces("White Knight 1", whiteKnight1, true, 1, 7, TypePiece.KNIGHT);
+        new Pieces("White Knight 2", whiteKnight2, true, 6, 7, TypePiece.KNIGHT);
+        new Pieces("White Bishop 2", whiteBishop1, true, 2, 7, TypePiece.BISHOP);
+        new Pieces("White Bishop 2", whiteBishop2, true, 5, 7, TypePiece.BISHOP);
+        new Pieces("White Queen", whiteQueen, true, 3, 7, TypePiece.QUEEN);
+        new Pieces("White King", whiteKing, true, 4, 7, TypePiece.KING);
 
-        Pieces wPawn1 = new Pieces("White Pawn 1", whitePawn1, true, 0, 6, TypePiece.WHITE_PAWN);
-        Pieces wPawn2 = new Pieces("White Pawn 2", whitePawn2, true, 1, 6, TypePiece.WHITE_PAWN);
-        Pieces wPawn3 = new Pieces("White Pawn 3", whitePawn3, true, 2, 6, TypePiece.WHITE_PAWN);
-        Pieces wPawn4 = new Pieces("White Pawn 4", whitePawn4, true, 3, 6, TypePiece.WHITE_PAWN);
-        Pieces wPawn5 = new Pieces("White Pawn 5", whitePawn5, true, 4, 6, TypePiece.WHITE_PAWN);
-        Pieces wPawn6 = new Pieces("White Pawn 6", whitePawn6, true, 5, 6, TypePiece.WHITE_PAWN);
-        Pieces wPawn7 = new Pieces("White Pawn 7", whitePawn7, true, 6, 6, TypePiece.WHITE_PAWN);
-        Pieces wPawn8 = new Pieces("White Pawn 8", whitePawn8, true, 7, 6, TypePiece.WHITE_PAWN);
+        new Pieces("Black Pawn 1", blackPawn1, false, 0, 1, TypePiece.BLACK_PAWN);
+        new Pieces("Black Pawn 2", blackPawn2, false, 1, 1, TypePiece.BLACK_PAWN);
+        new Pieces("Black Pawn 3", blackPawn3, false, 2, 1, TypePiece.BLACK_PAWN);
+        new Pieces("Black Pawn 4", blackPawn4, false, 3, 1, TypePiece.BLACK_PAWN);
+        new Pieces("Black Pawn 5", blackPawn5, false, 4, 1, TypePiece.BLACK_PAWN);
+        new Pieces("Black Pawn 6", blackPawn6, false, 5, 1, TypePiece.BLACK_PAWN);
+        new Pieces("Black Pawn 7", blackPawn7, false, 6, 1, TypePiece.BLACK_PAWN);
+        new Pieces("Black Pawn 8", blackPawn8, false, 7, 1, TypePiece.BLACK_PAWN);
+
+        new Pieces("White Pawn 1", whitePawn1, true, 0, 6, TypePiece.WHITE_PAWN);
+        new Pieces("White Pawn 2", whitePawn2, true, 1, 6, TypePiece.WHITE_PAWN);
+        new Pieces("White Pawn 3", whitePawn3, true, 2, 6, TypePiece.WHITE_PAWN);
+        new Pieces("White Pawn 4", whitePawn4, true, 3, 6, TypePiece.WHITE_PAWN);
+        new Pieces("White Pawn 5", whitePawn5, true, 4, 6, TypePiece.WHITE_PAWN);
+        new Pieces("White Pawn 6", whitePawn6, true, 5, 6, TypePiece.WHITE_PAWN);
+        new Pieces("White Pawn 7", whitePawn7, true, 6, 6, TypePiece.WHITE_PAWN);
+        new Pieces("White Pawn 8", whitePawn8, true, 7, 6, TypePiece.WHITE_PAWN);
 
         board = new Rectangle[]{rect00, rect02, rect04, rect06, rect11, rect13, rect15, rect17, rect20, rect22, rect24, rect26, rect31, rect33, rect35, rect37, rect40, rect42, rect44, rect46, rect51, rect53, rect55, rect57, rect60, rect62, rect64, rect66, rect71, rect73, rect75, rect77,
                 rect01, rect03, rect05, rect07, rect10, rect12, rect14, rect16, rect21, rect23, rect25, rect27, rect30, rect32, rect34, rect36, rect41, rect43, rect45, rect47, rect50, rect52, rect54, rect56, rect61, rect63, rect65, rect67, rect70, rect72, rect74, rect76};
@@ -90,7 +105,6 @@ public class Controller implements Initializable {
 
     private void subSquare(int x, int y) {
         for (Rectangle square : board) {
-            //System.out.println(x + "-" + y);
             if (x * 70 == square.getLayoutX() && y * 70 == square.getLayoutY()) {
                 square.setFill(Color.LIGHTSALMON);
             }
@@ -98,7 +112,7 @@ public class Controller implements Initializable {
     }
 
     private void unsubSquare() {
-        for (int i = 0; i < board.length/2; i++) {
+        for (int i = 0; i < board.length / 2; i++) {
             board[i].setFill(Color.WHITE);
         }
         for (int i = 32; i < board.length; i++) {
@@ -107,25 +121,52 @@ public class Controller implements Initializable {
     }
 
     private void movePiece(MouseEvent e, Pieces piece) {
-        ImageView selectedPiece = piece.getImageView();
-        selectedPiece.toFront();
-        selectedPiece.setX(e.getX() - 25);
-        selectedPiece.setY(e.getY() - 25);
-        selectedPiece.setOnMouseClicked(ev -> placePiece(ev, piece));
-        rectPoint.setVisible(true);
-        if (((e.getSceneX() - 35) / 70) * 70 != rectPoint.getLayoutX() && ((e.getSceneY() - 35) / 70) * 70 != rectPoint.getLayoutY()) {
-            rectPoint.setLayoutX(Math.round((e.getSceneX() - 35) / 70) * 70);
-            rectPoint.setLayoutY(Math.round((e.getSceneY() - 35) / 70) * 70);
+        if ((isPlayerWhiteTurn && piece.isWhite()) || (!isPlayerWhiteTurn && !piece.isWhite())) {
+            ImageView selectedPiece = piece.getImageView();
+            selectedPiece.toFront();
+            selectedPiece.setX(e.getX() - 25);
+            selectedPiece.setY(e.getY() - 25);
+            selectedPiece.setOnMouseClicked(ev -> placePiece(ev, piece));
+            rectPoint.setVisible(true);
+            if (((e.getSceneX() - 35) / 70) * 70 != rectPoint.getLayoutX() && ((e.getSceneY() - 35) / 70) * 70 != rectPoint.getLayoutY()) {
+                rectPoint.setLayoutX(Math.round((e.getSceneX() - 35) / 70) * 70);
+                rectPoint.setLayoutY(Math.round((e.getSceneY() - 35) / 70) * 70);
+            }
+            for (double position : piece.getPossibleMove()) {
+                subSquare((int) position, (int) ((position * 10) - ((int) position * 10)));
+            }
         }
-        for (double position : piece.getPossibleMove()) {
-            subSquare((int) position, (int) ((position * 10) - ((int) position * 10)));
+    }
+
+    private void changePlayer() {
+        isPlayerWhiteTurn = !isPlayerWhiteTurn;
+        if (isPlayerWhiteTurn) {
+            player.setText("White player");
+            player.setTextFill(Color.GREY);
+            timerBlack.pause();
+            timerWhite.resume();
+        } else {
+            player.setText("Black player");
+            player.setTextFill(Color.BLACK);
+            timerWhite.pause();
+            timerBlack.resume();
         }
     }
 
     private void placePiece(MouseEvent e, Pieces piece) {
+        boolean isPlace = false;
         rectPoint.setVisible(false);
-        piece.changePosition(e.getSceneX(), e.getSceneY());
-        allPieces.getChildren().remove(isPieceInSameCase(piece));
+        for (Rectangle rectangle : board) {
+            if (Math.round((e.getSceneX() - 35) / 70) * 70 == rectangle.getLayoutX()
+                    && Math.round((e.getSceneY() - 35) / 70) * 70 == rectangle.getLayoutY()
+                    && rectangle.getFill() == Color.LIGHTSALMON) {
+                piece.changePosition(e.getSceneX(), e.getSceneY());
+                allPieces.getChildren().remove(isPieceInSameCase(piece));
+                isPlace = true;
+                changePlayer();
+            }
+        }
+        if (!isPlace) piece.changePosition((double) piece.getPositionX() * 70, (double) piece.getPositionY() * 70);
         unsubSquare();
     }
 

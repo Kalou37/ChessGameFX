@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
     <Pane>
@@ -171,4 +173,19 @@
             <Image url="@chessSheets/whiteRook.png" />
         </ImageView>
     </Group>
+   <Label layoutX="580.0" layoutY="20.0" text="ChessGameFX">
+      <font>
+         <Font size="25.0" />
+      </font>
+   </Label>
+   <Label layoutX="580.0" layoutY="60.0" text="Turn to :">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
+   <Label fx:id="player" layoutX="640.0" layoutY="60.0" text="White player" textFill="GREY">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
 </AnchorPane>
