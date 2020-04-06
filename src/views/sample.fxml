@@ -188,4 +188,24 @@
          <Font size="17.0" />
       </font>
    </Label>
+   <Label layoutX="580.0" layoutY="110.0" text="White Time :" textFill="GREY">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label layoutX="580.0" layoutY="130.0" text="Black Time :">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="labelTimeWhite" layoutX="665.0" layoutY="110.0" text="00:00:00" textFill="GREY">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="labelTimeBlack" layoutX="665.0" layoutY="130.0" text="00:00:00">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
 </AnchorPane>

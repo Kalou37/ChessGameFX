@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -8,12 +9,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import views.Chrono;
 import views.Pieces;
 import views.TypePiece;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Controller implements Initializable {
     @FXML
@@ -38,24 +40,27 @@ public class Controller implements Initializable {
     private Rectangle rectPoint;
     @FXML
     private Label player;
+    @FXML
+    private Label labelTimeWhite;
+    @FXML
+    private Label labelTimeBlack;
 
     private Rectangle[] board;
 
     private boolean isPlayerWhiteTurn;
 
-    private Chrono timerWhite;
-    private Chrono timerBlack;
+    Timer whiteTime = new Timer();
+    Timer blackTime = new Timer();
+    int timerWhite;
+    int timerBlack;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         isPlayerWhiteTurn = true;
         rectPoint.setVisible(false);
 
-        timerWhite = new Chrono();
-        timerBlack = new Chrono();
-        timerWhite.start();
-        timerBlack.start();
-        timerBlack.pause();
+        timerWhite = -1;
+        timerBlack = -1;
 
         new Pieces("Black Roof 1", blackRoof1, false, 0, 0, TypePiece.ROOF);
         new Pieces("Black Roof 2", blackRoof2, false, 7, 0, TypePiece.ROOF);
@@ -101,6 +106,43 @@ public class Controller implements Initializable {
         for (Pieces piece : Pieces.getPiecesList()) {
             piece.getImageView().setOnMouseDragged(e -> movePiece(e, piece));
         }
+
+        setTime();
+    }
+
+    public String convertTime(int time) {
+        int seconds = time % 60;
+        int minutes = (time / 60) % 60;
+        int hours = (time / 3600);
+        return "" + ((hours < 10) ? "0" + hours : hours) + ":" + ((minutes < 10) ? "0" + minutes : minutes) + ":" + ((seconds < 10) ? "0" + seconds : seconds);
+    }
+
+    public void setTime() {
+        if (isPlayerWhiteTurn) {
+            whiteTime = new Timer();
+            whiteTime.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    Platform.runLater(new Runnable() {
+                        @Override public void run() {
+                            labelTimeWhite.setText(convertTime(++timerWhite));
+                        }
+                    });
+                }
+            }, 0, 1000);
+        } else {
+            blackTime = new Timer();
+            blackTime.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    Platform.runLater(new Runnable() {
+                        @Override public void run() {
+                            labelTimeBlack.setText(convertTime(++timerBlack));
+                        }
+                    });
+                }
+            }, 0, 1000);
+        }
     }
 
     private void subSquare(int x, int y) {
@@ -141,16 +183,15 @@ public class Controller implements Initializable {
     private void changePlayer() {
         isPlayerWhiteTurn = !isPlayerWhiteTurn;
         if (isPlayerWhiteTurn) {
+            blackTime.cancel();
             player.setText("White player");
             player.setTextFill(Color.GREY);
-            timerBlack.pause();
-            timerWhite.resume();
         } else {
+            whiteTime.cancel();
             player.setText("Black player");
             player.setTextFill(Color.BLACK);
-            timerWhite.pause();
-            timerBlack.resume();
         }
+        setTime();
     }
 
     private void placePiece(MouseEvent e, Pieces piece) {

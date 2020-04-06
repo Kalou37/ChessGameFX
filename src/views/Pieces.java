@@ -79,30 +79,28 @@ public class Pieces {
         List<Double> retour = new ArrayList<>();
         switch (this.getTypePiece()) {
             case ROOF:
-                retour.add((double) posX + ((double) posY / 10));
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX+i, posY)) break;
-                    retour.add((double) posX + i + ((double) posY / 10));
+                    if(posX + i < 8) retour.add((double) posX + i + ((double) posY / 10));
                     if(pieceInSameCase(posX+i, posY)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX-i, posY)) break;
-                    retour.add((double) posX - i + ((double) posY / 10));
+                    if(posX - i >= 0) retour.add((double) posX - i + ((double) posY / 10));
                     if(pieceInSameCase(posX-i, posY)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX, posY+i)) break;
                     if (posY + i < 8) retour.add(posX + ((double) (posY + i) / 10));
                     if(pieceInSameCase(posX, posY+i)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX, posY-i)) break;
                     if (posY - i >= 0) retour.add(posX + ((double) (posY - i) / 10));
                     if(pieceInSameCase(posX, posY-i)) break;
                 }
                 break;
             case KNIGHT:
-                retour.add(posX + ((double) (posY) / 10));
                 if(posX-1 >= 0 && posY-2 >= 0 && !pieceInSameCaseAndSameColor(posX-1, posY-2)) retour.add(posX-1 + ((double) (posY-2) / 10));
                 if(posX+1 < 8 && posY-2 >= 0 && !pieceInSameCaseAndSameColor(posX+1, posY-2)) retour.add(posX+1 + ((double) (posY-2) / 10));
                 if(posX-2 >= 0 && posY-1 >= 0 && !pieceInSameCaseAndSameColor(posX-2, posY-1)) retour.add(posX-2 + ((double) (posY-1) / 10));
@@ -113,64 +111,64 @@ public class Pieces {
                 if(posX+2 < 8 && posY+1 < 8 && !pieceInSameCaseAndSameColor(posX+2, posY+1)) retour.add(posX+2 + ((double) (posY+1) / 10));
                 break;
             case BISHOP:
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX-i, posY-i)) break;
                     if(posX - i >= 0 && posY - i >= 0) retour.add((double) posX - i + ((double) (posY - i) / 10));
                     if(pieceInSameCase(posX-i, posY-i)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX+i, posY+i)) break;
                     if(posX + i < 8 && posY + i < 8) retour.add((double) posX + i + ((double) (posY + i) / 10));
                     if(pieceInSameCase(posX+i, posY+i)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX-i, posY+i)) break;
                     if(posX - i >= 0 && posY + i < 8) retour.add((double) posX - i + ((double) (posY + i) / 10));
                     if(pieceInSameCase(posX-i, posY+i)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX-i, posY-i)) break;
                     if(posX + i < 8 && posY - i >= 0) retour.add((double) posX + i + ((double) (posY - i) / 10));
                     if(pieceInSameCase(posX-i, posY-i)) break;
                 }
                 break;
             case QUEEN:
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX+i, posY)) break;
                     retour.add((double) posX + i + ((double) posY / 10));
                     if(pieceInSameCase(posX+i, posY)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX-i, posY)) break;
                     retour.add((double) posX - i + ((double) posY / 10));
                     if(pieceInSameCase(posX-i, posY)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX, posY+i)) break;
                     if (posY + i < 8) retour.add(posX + ((double) (posY + i) / 10));
                     if(pieceInSameCase(posX, posY+i)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX, posY-i)) break;
                     if (posY - i >= 0) retour.add(posX + ((double) (posY - i) / 10));
                     if(pieceInSameCase(posX, posY-i)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX-i, posY-i)) break;
                     if(posX - i >= 0 && posY - i >= 0) retour.add((double) posX - i + ((double) (posY - i) / 10));
                     if(pieceInSameCase(posX-i, posY-i)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX+i, posY+i)) break;
                     if(posX + i < 8 && posY + i < 8) retour.add((double) posX + i + ((double) (posY + i) / 10));
                     if(pieceInSameCase(posX+i, posY+i)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX-i, posY+i)) break;
                     if(posX - i >= 0 && posY + i < 8) retour.add((double) posX - i + ((double) (posY + i) / 10));
                     if(pieceInSameCase(posX-i, posY+i)) break;
                 }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 1; i < 8; i++) {
                     if(pieceInSameCaseAndSameColor(posX-i, posY-i)) break;
                     if(posX + i < 8 && posY - i >= 0) retour.add((double) posX + i + ((double) (posY - i) / 10));
                     if(pieceInSameCase(posX-i, posY-i)) break;
@@ -178,7 +176,6 @@ public class Pieces {
                 break;
             case KING:
                 if(this.typePiece.isFirstMove()) System.out.println("First move, Rock possible !");
-                retour.add(posX + ((double) (posY / 10)));
                 if(posX-1 >= 0 && posY-1 >= 0 && !pieceInSameCaseAndSameColor(posX-1, posY-1)) retour.add(posX-1 + ((double) (posY-1) / 10));
                 if(posY-1 >= 0 && !pieceInSameCaseAndSameColor(posX, posY-1)) retour.add(posX + ((double) (posY-1) / 10));
                 if(posX+1 < 8 && posY-1 >= 0 && !pieceInSameCaseAndSameColor(posX+1, posY-1)) retour.add(posX+1 + ((double) (posY-1) / 10));
@@ -189,21 +186,19 @@ public class Pieces {
                 if(posX+1 < 8 && posY+1 < 8 && !pieceInSameCaseAndSameColor(posX+1, posY+1)) retour.add(posX+1 + ((double) (posY+1) / 10));
                 break;
             case BLACK_PAWN:
-                retour.add(posX + ((double) (posY) / 10));
                 if(posY+1 < 8 && !pieceInSameCase(posX, posY+1)) retour.add(posX + ((double) (posY+1) / 10));
                 if(posY == 1 && !pieceInSameCase(posX, 2) && !pieceInSameCase(posX, 3)) retour.add(posX + 0.3);
                 if(pieceInSameCaseNotSameColor(posX-1, posY+1)) retour.add(posX-1 + ((double) (posY+1) / 10));
                 if(pieceInSameCaseNotSameColor(posX+1, posY+1)) retour.add(posX+1 + ((double) (posY+1) / 10));
                 break;
             case WHITE_PAWN:
-                retour.add(posX + ((double) (posY) / 10));
                 if(posY-1 >= 0 && !pieceInSameCase(posX, posY-1)) retour.add(posX + ((double) (posY-1) / 10));
                 if(posY == 6 && !pieceInSameCase(posX, 5) && !pieceInSameCase(posX, 4)) retour.add(posX + 0.4);
                 if(pieceInSameCaseNotSameColor(posX-1, posY-1)) retour.add(posX-1 + ((double) (posY-1) / 10));
                 if(pieceInSameCaseNotSameColor(posX+1, posY-1)) retour.add(posX+1 + ((double) (posY-1) / 10));
                 break;
             default:
-                retour.add(0.0);
+                retour.add(1.1);
                 break;
         }
         Double[] array = new Double[retour.size()];
