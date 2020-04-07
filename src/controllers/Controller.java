@@ -4,14 +4,19 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+import sample.Main;
 import views.Pieces;
 import views.TypePiece;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -44,15 +49,20 @@ public class Controller implements Initializable {
     private Label labelTimeWhite;
     @FXML
     private Label labelTimeBlack;
+    @FXML
+    private Button restartButton;
 
     private Rectangle[] board;
 
     private boolean isPlayerWhiteTurn;
 
-    Timer whiteTime = new Timer();
-    Timer blackTime = new Timer();
-    int timerWhite;
-    int timerBlack;
+    private Timer whiteTime = new Timer();
+    private Timer blackTime = new Timer();
+    private int timerWhite;
+    private int timerBlack;
+    private boolean blitzMode;
+
+    private Stage ps;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,6 +71,8 @@ public class Controller implements Initializable {
 
         timerWhite = -1;
         timerBlack = -1;
+
+        ps = Main.getPrimaryStage();
 
         new Pieces("Black Roof 1", blackRoof1, false, 0, 0, TypePiece.ROOF);
         new Pieces("Black Roof 2", blackRoof2, false, 7, 0, TypePiece.ROOF);
@@ -107,6 +119,17 @@ public class Controller implements Initializable {
             piece.getImageView().setOnMouseDragged(e -> movePiece(e, piece));
         }
 
+        restartButton.setOnAction(e -> {
+            Main cls = new Main();
+            Class<? extends Main> c = cls.getClass();
+            try {
+                Method restart = c.getMethod("restart", Stage.class);
+                restart.invoke(cls, ps);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
+                System.err.println(ex.toString());
+            }
+        });
+
         setTime();
     }
 
@@ -123,11 +146,7 @@ public class Controller implements Initializable {
             whiteTime.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
-                    Platform.runLater(new Runnable() {
-                        @Override public void run() {
-                            labelTimeWhite.setText(convertTime(++timerWhite));
-                        }
-                    });
+                    Platform.runLater(() -> labelTimeWhite.setText(convertTime(++timerWhite)));
                 }
             }, 0, 1000);
         } else {
@@ -135,11 +154,7 @@ public class Controller implements Initializable {
             blackTime.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
-                    Platform.runLater(new Runnable() {
-                        @Override public void run() {
-                            labelTimeBlack.setText(convertTime(++timerBlack));
-                        }
-                    });
+                    Platform.runLater(() -> labelTimeBlack.setText(convertTime(++timerBlack)));
                 }
             }, 0, 1000);
         }

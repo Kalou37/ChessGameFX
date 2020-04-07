@@ -183,7 +183,7 @@
          <Font size="17.0" />
       </font>
    </Label>
-   <Label fx:id="player" layoutX="640.0" layoutY="60.0" text="White player" textFill="GREY">
+   <Label fx:id="player" layoutX="650.0" layoutY="60.0" text="White player" textFill="GREY">
       <font>
          <Font size="17.0" />
       </font>
@@ -198,14 +198,15 @@
          <Font size="15.0" />
       </font>
    </Label>
-   <Label fx:id="labelTimeWhite" layoutX="665.0" layoutY="110.0" text="00:00:00" textFill="GREY">
+   <Label fx:id="labelTimeWhite" layoutX="675.0" layoutY="110.0" text="00:00:00" textFill="GREY">
       <font>
          <Font size="15.0" />
       </font>
    </Label>
-   <Label fx:id="labelTimeBlack" layoutX="665.0" layoutY="130.0" text="00:00:00">
+   <Label fx:id="labelTimeBlack" layoutX="675.0" layoutY="130.0" text="00:00:00">
       <font>
          <Font size="15.0" />
       </font>
    </Label>
+   <Button fx:id="restartButton" layoutX="630.0" layoutY="520.0" mnemonicParsing="false" text="Restart" />
 </AnchorPane>

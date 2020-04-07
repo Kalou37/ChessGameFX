@@ -24,6 +24,10 @@ public class Pieces {
         piecesList.add(this);
     }
 
+    public static void cleanList(){
+        piecesList.clear();
+    }
+
     public ImageView getImageView() {
         return imageView;
     }

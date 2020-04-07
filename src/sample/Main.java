@@ -1,19 +1,21 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import views.Pieces;
 
 import java.io.IOException;
 
 public class Main extends Application {
+    private static Stage primaryStage;
 
     @Override
     public void start(Stage primaryStage) {
+        Main.primaryStage = primaryStage;
         try{
             startGame(primaryStage);
         } catch (IOException e){
@@ -28,12 +30,12 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 760, 560));
         primaryStage.show();
         primaryStage.setOnCloseRequest(e -> {
-            Platform.exit();
+           // Platform.exit();
             System.exit(0);
         });
     }
 
-    void restart(Stage primaryStage) {
+    public void restart(Stage primaryStage) {
         cleanup();
         try{
             startGame(primaryStage);
@@ -42,8 +44,12 @@ public class Main extends Application {
         }
     }
 
-    void cleanup() {
-        // stop animations reset model ect.
+    public void cleanup() {
+        Pieces.cleanList();
+    }
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
     }
 
     public static void main(String[] args) {
