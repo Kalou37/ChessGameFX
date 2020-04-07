@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pieces {
-    private String name;
     private ImageView imageView;
     private boolean isWhite;
     private int positionX;
@@ -14,8 +13,7 @@ public class Pieces {
     private TypePiece typePiece;
     private static ArrayList<Pieces> piecesList = new ArrayList<>();
 
-    public Pieces(String name, ImageView imgView, boolean colorWhite, int posX, int posY, TypePiece typePiece) {
-        this.name = name;
+    public Pieces(ImageView imgView, boolean colorWhite, int posX, int posY, TypePiece typePiece) {
         this.imageView = imgView;
         this.isWhite = colorWhite;
         this.positionX = posX;

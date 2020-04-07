@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.paint.Color;
@@ -40,75 +41,74 @@ public class Controller implements Initializable {
     @FXML
     private Rectangle rect60, rect61, rect62, rect63, rect64, rect65, rect66, rect67, rect70, rect71, rect72, rect73, rect74, rect75, rect76, rect77;
     @FXML
-    private Group allPieces;
-    @FXML
     private Rectangle rectPoint;
     @FXML
-    private Label player;
+    private Group allPieces;
     @FXML
-    private Label labelTimeWhite;
+    private Label player, labelTimeWhite, labelTimeBlack, gameStartTxt, blitzTxt;
     @FXML
-    private Label labelTimeBlack;
+    private Button normalButton, blitzButton, paneBlitzButton;
     @FXML
-    private Button restartButton;
+    private TitledPane blitzOver;
 
     private Rectangle[] board;
-
-    private boolean isPlayerWhiteTurn;
-
-    private Timer whiteTime = new Timer();
-    private Timer blackTime = new Timer();
-    private int timerWhite;
-    private int timerBlack;
-    private boolean blitzMode;
-
-    private Stage ps;
+    private boolean isPlayerWhiteTurn, blitzMode, gameStart, gameOver;
+    private Timer whiteTime, blackTime;
+    private int timerWhite, timerBlack;
+    private Main cls;
+    private Method restart;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         isPlayerWhiteTurn = true;
         rectPoint.setVisible(false);
+        blitzOver.setVisible(false);
+
+        whiteTime = new Timer();
+        blackTime = new Timer();
+
+        gameStart = false;
+        gameOver = false;
+        blitzMode = Main.getBlitz();
 
         timerWhite = -1;
         timerBlack = -1;
 
-        ps = Main.getPrimaryStage();
+        new Pieces(blackRoof1, false, 0, 0, TypePiece.ROOF);
+        new Pieces(blackRoof2, false, 7, 0, TypePiece.ROOF);
+        new Pieces(blackKnight1, false, 1, 0, TypePiece.KNIGHT);
+        new Pieces(blackKnight2, false, 6, 0, TypePiece.KNIGHT);
+        new Pieces(blackBishop1, false, 2, 0, TypePiece.BISHOP);
+        new Pieces(blackBishop2, false, 5, 0, TypePiece.BISHOP);
+        new Pieces(blackQueen, false, 3, 0, TypePiece.QUEEN);
+        new Pieces(blackKing, false, 4, 0, TypePiece.KING);
 
-        new Pieces("Black Roof 1", blackRoof1, false, 0, 0, TypePiece.ROOF);
-        new Pieces("Black Roof 2", blackRoof2, false, 7, 0, TypePiece.ROOF);
-        new Pieces("Black Knight 1", blackKnight1, false, 1, 0, TypePiece.KNIGHT);
-        new Pieces("Black Knight 2", blackKnight2, false, 6, 0, TypePiece.KNIGHT);
-        new Pieces("Black Bishop 2", blackBishop1, false, 2, 0, TypePiece.BISHOP);
-        new Pieces("Black Bishop 2", blackBishop2, false, 5, 0, TypePiece.BISHOP);
-        new Pieces("Black Queen", blackQueen, false, 3, 0, TypePiece.QUEEN);
-        new Pieces("Black King", blackKing, false, 4, 0, TypePiece.KING);
+        new Pieces(whiteRoof1, true, 0, 7, TypePiece.ROOF);
+        new Pieces(whiteRoof2, true, 7, 7, TypePiece.ROOF);
+        new Pieces(whiteKnight1, true, 1, 7, TypePiece.KNIGHT);
+        new Pieces(whiteKnight2, true, 6, 7, TypePiece.KNIGHT);
+        new Pieces(whiteBishop1, true, 2, 7, TypePiece.BISHOP);
+        new Pieces(whiteBishop2, true, 5, 7, TypePiece.BISHOP);
+        new Pieces(whiteQueen, true, 3, 7, TypePiece.QUEEN);
+        new Pieces(whiteKing, true, 4, 7, TypePiece.KING);
 
-        new Pieces("White Roof 1", whiteRoof1, true, 0, 7, TypePiece.ROOF);
-        new Pieces("White Roof 2", whiteRoof2, true, 7, 7, TypePiece.ROOF);
-        new Pieces("White Knight 1", whiteKnight1, true, 1, 7, TypePiece.KNIGHT);
-        new Pieces("White Knight 2", whiteKnight2, true, 6, 7, TypePiece.KNIGHT);
-        new Pieces("White Bishop 2", whiteBishop1, true, 2, 7, TypePiece.BISHOP);
-        new Pieces("White Bishop 2", whiteBishop2, true, 5, 7, TypePiece.BISHOP);
-        new Pieces("White Queen", whiteQueen, true, 3, 7, TypePiece.QUEEN);
-        new Pieces("White King", whiteKing, true, 4, 7, TypePiece.KING);
+        new Pieces(blackPawn1, false, 0, 1, TypePiece.BLACK_PAWN);
+        new Pieces(blackPawn2, false, 1, 1, TypePiece.BLACK_PAWN);
+        new Pieces(blackPawn3, false, 2, 1, TypePiece.BLACK_PAWN);
+        new Pieces(blackPawn4, false, 3, 1, TypePiece.BLACK_PAWN);
+        new Pieces(blackPawn5, false, 4, 1, TypePiece.BLACK_PAWN);
+        new Pieces(blackPawn6, false, 5, 1, TypePiece.BLACK_PAWN);
+        new Pieces(blackPawn7, false, 6, 1, TypePiece.BLACK_PAWN);
+        new Pieces(blackPawn8, false, 7, 1, TypePiece.BLACK_PAWN);
 
-        new Pieces("Black Pawn 1", blackPawn1, false, 0, 1, TypePiece.BLACK_PAWN);
-        new Pieces("Black Pawn 2", blackPawn2, false, 1, 1, TypePiece.BLACK_PAWN);
-        new Pieces("Black Pawn 3", blackPawn3, false, 2, 1, TypePiece.BLACK_PAWN);
-        new Pieces("Black Pawn 4", blackPawn4, false, 3, 1, TypePiece.BLACK_PAWN);
-        new Pieces("Black Pawn 5", blackPawn5, false, 4, 1, TypePiece.BLACK_PAWN);
-        new Pieces("Black Pawn 6", blackPawn6, false, 5, 1, TypePiece.BLACK_PAWN);
-        new Pieces("Black Pawn 7", blackPawn7, false, 6, 1, TypePiece.BLACK_PAWN);
-        new Pieces("Black Pawn 8", blackPawn8, false, 7, 1, TypePiece.BLACK_PAWN);
-
-        new Pieces("White Pawn 1", whitePawn1, true, 0, 6, TypePiece.WHITE_PAWN);
-        new Pieces("White Pawn 2", whitePawn2, true, 1, 6, TypePiece.WHITE_PAWN);
-        new Pieces("White Pawn 3", whitePawn3, true, 2, 6, TypePiece.WHITE_PAWN);
-        new Pieces("White Pawn 4", whitePawn4, true, 3, 6, TypePiece.WHITE_PAWN);
-        new Pieces("White Pawn 5", whitePawn5, true, 4, 6, TypePiece.WHITE_PAWN);
-        new Pieces("White Pawn 6", whitePawn6, true, 5, 6, TypePiece.WHITE_PAWN);
-        new Pieces("White Pawn 7", whitePawn7, true, 6, 6, TypePiece.WHITE_PAWN);
-        new Pieces("White Pawn 8", whitePawn8, true, 7, 6, TypePiece.WHITE_PAWN);
+        new Pieces(whitePawn1, true, 0, 6, TypePiece.WHITE_PAWN);
+        new Pieces(whitePawn2, true, 1, 6, TypePiece.WHITE_PAWN);
+        new Pieces(whitePawn3, true, 2, 6, TypePiece.WHITE_PAWN);
+        new Pieces(whitePawn4, true, 3, 6, TypePiece.WHITE_PAWN);
+        new Pieces(whitePawn5, true, 4, 6, TypePiece.WHITE_PAWN);
+        new Pieces(whitePawn6, true, 5, 6, TypePiece.WHITE_PAWN);
+        new Pieces(whitePawn7, true, 6, 6, TypePiece.WHITE_PAWN);
+        new Pieces(whitePawn8, true, 7, 6, TypePiece.WHITE_PAWN);
 
         board = new Rectangle[]{rect00, rect02, rect04, rect06, rect11, rect13, rect15, rect17, rect20, rect22, rect24, rect26, rect31, rect33, rect35, rect37, rect40, rect42, rect44, rect46, rect51, rect53, rect55, rect57, rect60, rect62, rect64, rect66, rect71, rect73, rect75, rect77,
                 rect01, rect03, rect05, rect07, rect10, rect12, rect14, rect16, rect21, rect23, rect25, rect27, rect30, rect32, rect34, rect36, rect41, rect43, rect45, rect47, rect50, rect52, rect54, rect56, rect61, rect63, rect65, rect67, rect70, rect72, rect74, rect76};
@@ -118,19 +118,32 @@ public class Controller implements Initializable {
         for (Pieces piece : Pieces.getPiecesList()) {
             piece.getImageView().setOnMouseDragged(e -> movePiece(e, piece));
         }
+        cls = new Main();
+        Class<? extends Main> c = cls.getClass();
 
-        restartButton.setOnAction(e -> {
-            Main cls = new Main();
-            Class<? extends Main> c = cls.getClass();
+        try {
+            restart = c.getMethod("restart", Stage.class, Boolean.class);
+        } catch (NoSuchMethodException e) {
+            restart = null;
+        }
+
+        normalButton.setOnAction(e -> {
             try {
-                Method restart = c.getMethod("restart", Stage.class);
-                restart.invoke(cls, ps);
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
-                System.err.println(ex.toString());
+                restart.invoke(cls, Main.getPrimaryStage(), false);
+            } catch (IllegalAccessException | InvocationTargetException ex) {
+                ex.printStackTrace();
             }
         });
 
-        setTime();
+        blitzButton.setOnAction(e -> {
+            try {
+                restart.invoke(cls, Main.getPrimaryStage(), true);
+            } catch (IllegalAccessException | InvocationTargetException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        paneBlitzButton.setOnAction(e -> blitzOver.setVisible(false));
     }
 
     public String convertTime(int time) {
@@ -146,7 +159,10 @@ public class Controller implements Initializable {
             whiteTime.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
-                    Platform.runLater(() -> labelTimeWhite.setText(convertTime(++timerWhite)));
+                    Platform.runLater(() -> {
+                        labelTimeWhite.setText(convertTime(++timerWhite));
+                        if(blitzMode && (timerWhite >= (5 * 60))) gameOver(true);
+                    });
                 }
             }, 0, 1000);
         } else {
@@ -154,10 +170,22 @@ public class Controller implements Initializable {
             blackTime.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
-                    Platform.runLater(() -> labelTimeBlack.setText(convertTime(++timerBlack)));
+                    Platform.runLater(() -> {
+                        labelTimeBlack.setText(convertTime(++timerBlack));
+                        if(blitzMode && (timerBlack >= (5 * 60))) gameOver(false);
+                    });
                 }
             }, 0, 1000);
         }
+    }
+
+    private void gameOver(boolean isWhitePlayer){
+        Pieces.cleanList();
+        whiteTime.cancel();
+        blackTime.cancel();
+        blitzOver.setVisible(true);
+        blitzTxt.setText(((isWhitePlayer) ? "Black" : "White") +  " player win the game !");
+        gameOver = true;
     }
 
     private void subSquare(int x, int y) {
@@ -178,19 +206,26 @@ public class Controller implements Initializable {
     }
 
     private void movePiece(MouseEvent e, Pieces piece) {
-        if ((isPlayerWhiteTurn && piece.isWhite()) || (!isPlayerWhiteTurn && !piece.isWhite())) {
-            ImageView selectedPiece = piece.getImageView();
-            selectedPiece.toFront();
-            selectedPiece.setX(e.getX() - 25);
-            selectedPiece.setY(e.getY() - 25);
-            selectedPiece.setOnMouseClicked(ev -> placePiece(ev, piece));
-            rectPoint.setVisible(true);
-            if (((e.getSceneX() - 35) / 70) * 70 != rectPoint.getLayoutX() && ((e.getSceneY() - 35) / 70) * 70 != rectPoint.getLayoutY()) {
-                rectPoint.setLayoutX(Math.round((e.getSceneX() - 35) / 70) * 70);
-                rectPoint.setLayoutY(Math.round((e.getSceneY() - 35) / 70) * 70);
-            }
-            for (double position : piece.getPossibleMove()) {
-                subSquare((int) position, (int) ((position * 10) - ((int) position * 10)));
+        if (!gameStart) {
+            setTime();
+            gameStartTxt.setVisible(false);
+            gameStart = true;
+        }
+        if(!gameOver) {
+            if ((isPlayerWhiteTurn && piece.isWhite()) || (!isPlayerWhiteTurn && !piece.isWhite())) {
+                ImageView selectedPiece = piece.getImageView();
+                selectedPiece.toFront();
+                selectedPiece.setX(e.getX() - 25);
+                selectedPiece.setY(e.getY() - 25);
+                selectedPiece.setOnMouseClicked(ev -> placePiece(ev, piece));
+                rectPoint.setVisible(true);
+                if (((e.getSceneX() - 35) / 70) * 70 != rectPoint.getLayoutX() && ((e.getSceneY() - 35) / 70) * 70 != rectPoint.getLayoutY()) {
+                    rectPoint.setLayoutX(Math.round((e.getSceneX() - 35) / 70) * 70);
+                    rectPoint.setLayoutY(Math.round((e.getSceneY() - 35) / 70) * 70);
+                }
+                for (double position : piece.getPossibleMove()) {
+                    subSquare((int) position, (int) ((position * 10) - ((int) position * 10)));
+                }
             }
         }
     }

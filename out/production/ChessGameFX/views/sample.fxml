@@ -173,40 +173,48 @@
             <Image url="@chessSheets/whiteRook.png" />
         </ImageView>
     </Group>
-   <Label layoutX="580.0" layoutY="20.0" text="ChessGameFX">
-      <font>
-         <Font size="25.0" />
-      </font>
-   </Label>
-   <Label layoutX="580.0" layoutY="60.0" text="Turn to :">
-      <font>
-         <Font size="17.0" />
-      </font>
-   </Label>
-   <Label fx:id="player" layoutX="650.0" layoutY="60.0" text="White player" textFill="GREY">
-      <font>
-         <Font size="17.0" />
-      </font>
-   </Label>
-   <Label layoutX="580.0" layoutY="110.0" text="White Time :" textFill="GREY">
-      <font>
-         <Font size="15.0" />
-      </font>
-   </Label>
-   <Label layoutX="580.0" layoutY="130.0" text="Black Time :">
-      <font>
-         <Font size="15.0" />
-      </font>
-   </Label>
-   <Label fx:id="labelTimeWhite" layoutX="675.0" layoutY="110.0" text="00:00:00" textFill="GREY">
-      <font>
-         <Font size="15.0" />
-      </font>
-   </Label>
-   <Label fx:id="labelTimeBlack" layoutX="675.0" layoutY="130.0" text="00:00:00">
-      <font>
-         <Font size="15.0" />
-      </font>
-   </Label>
-   <Button fx:id="restartButton" layoutX="630.0" layoutY="520.0" mnemonicParsing="false" text="Restart" />
+    <Label layoutX="580.0" layoutY="20.0" text="ChessGameFX">
+        <font>
+            <Font size="25.0" />
+        </font>
+    </Label>
+    <Label layoutX="580.0" layoutY="60.0" text="Turn to :">
+        <font>
+            <Font size="17.0" />
+        </font>
+    </Label>
+    <Label fx:id="player" layoutX="650.0" layoutY="60.0" text="White player" textFill="GREY">
+        <font>
+            <Font size="17.0" />
+        </font>
+    </Label>
+    <Label layoutX="580.0" layoutY="110.0" text="White Time :" textFill="GREY">
+        <font>
+            <Font size="15.0" />
+        </font>
+    </Label>
+    <Label layoutX="580.0" layoutY="130.0" text="Black Time :">
+        <font>
+            <Font size="15.0" />
+        </font>
+    </Label>
+    <Label fx:id="labelTimeWhite" layoutX="675.0" layoutY="110.0" text="00:00:00" textFill="GREY">
+        <font>
+            <Font size="15.0" />
+        </font>
+    </Label>
+    <Label fx:id="labelTimeBlack" layoutX="675.0" layoutY="130.0" text="00:00:00">
+        <font>
+            <Font size="15.0" />
+        </font>
+    </Label>
+    <Button fx:id="normalButton" layoutX="600.0" layoutY="480.0" mnemonicParsing="false" prefWidth="120.0" text="Start normal mode" />
+    <Button fx:id="blitzButton" layoutX="600.0" layoutY="520.0" mnemonicParsing="false" prefWidth="120.0" text="Start blitz mode" />
+    <Label fx:id="gameStartTxt" layoutX="570.0" layoutY="160.0" prefHeight="50.0" prefWidth="179.0" text="Game start when white player pick his first piece." textAlignment="CENTER" wrapText="true" />
+    <TitledPane fx:id="blitzOver" animated="false" collapsible="false" layoutX="180.0" layoutY="195.0" prefHeight="140.0" prefWidth="220.0" text="Time over" visible="true">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Label fx:id="blitzTxt" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="17.0" prefWidth="200.0" text="White player win the game !" />
+            <Button fx:id="paneBlitzButton" layoutX="85.0" layoutY="70.0" mnemonicParsing="false" text="Close" />
+        </AnchorPane>
+    </TitledPane>
 </AnchorPane>
