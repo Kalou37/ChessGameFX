@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import views.Pieces;
+import views.pieces.Pieces;
 
 import java.io.IOException;
 
@@ -22,6 +22,7 @@ public class Main extends Application {
             startGame(primaryStage);
         } catch (IOException e){
             System.out.println("Unable to start game.");
+            System.err.println(e.getMessage());
         }
 
     }

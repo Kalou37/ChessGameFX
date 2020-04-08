@@ -210,11 +210,17 @@
     </Label>
     <Button fx:id="normalButton" layoutX="600.0" layoutY="480.0" mnemonicParsing="false" prefWidth="120.0" text="Start normal mode" />
     <Button fx:id="blitzButton" layoutX="600.0" layoutY="520.0" mnemonicParsing="false" prefWidth="120.0" text="Start blitz mode" />
-    <Label fx:id="gameStartTxt" layoutX="570.0" layoutY="160.0" prefHeight="50.0" prefWidth="179.0" text="Game start when white player pick his first piece." textAlignment="CENTER" wrapText="true" />
+    <Label fx:id="gameStartTxt" layoutX="570.0" layoutY="160.0" prefHeight="50.0" prefWidth="180.0" text="Game start when white player pick his first piece." textAlignment="CENTER" wrapText="true" />
     <TitledPane fx:id="blitzOver" animated="false" collapsible="false" layoutX="180.0" layoutY="195.0" prefHeight="140.0" prefWidth="220.0" text="Time over" visible="true">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
             <Label fx:id="blitzTxt" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="17.0" prefWidth="200.0" text="White player win the game !" />
             <Button fx:id="paneBlitzButton" layoutX="85.0" layoutY="70.0" mnemonicParsing="false" text="Close" />
         </AnchorPane>
     </TitledPane>
+   <Label fx:id="movesTxt" alignment="TOP_LEFT" layoutX="570.0" layoutY="256.0" prefHeight="70.0" prefWidth="180.0" textAlignment="CENTER" wrapText="true" />
+   <Label contentDisplay="CENTER" layoutX="620.0" layoutY="235.0" text="Last moves :" textAlignment="CENTER">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
 </AnchorPane>

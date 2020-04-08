@@ -13,8 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import sample.Main;
-import views.Pieces;
-import views.TypePiece;
+import views.pieces.*;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -47,16 +46,18 @@ public class Controller implements Initializable {
     @FXML
     private Label player, labelTimeWhite, labelTimeBlack, gameStartTxt, blitzTxt;
     @FXML
+    private Label movesTxt;
+    @FXML
     private Button normalButton, blitzButton, paneBlitzButton;
     @FXML
     private TitledPane blitzOver;
 
-    private Rectangle[] board;
-    private boolean isPlayerWhiteTurn, blitzMode, gameStart, gameOver;
-    private Timer whiteTime, blackTime;
-    private int timerWhite, timerBlack;
-    private Main cls;
-    private Method restart;
+    private static Rectangle[] board;
+    private static boolean isPlayerWhiteTurn, blitzMode, gameStart, gameOver;
+    private static Timer whiteTime, blackTime;
+    private static int timerWhite, timerBlack;
+    private static Main cls;
+    private static Method restart;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,41 +75,43 @@ public class Controller implements Initializable {
         timerWhite = -1;
         timerBlack = -1;
 
-        new Pieces(blackRoof1, false, 0, 0, TypePiece.ROOF);
-        new Pieces(blackRoof2, false, 7, 0, TypePiece.ROOF);
-        new Pieces(blackKnight1, false, 1, 0, TypePiece.KNIGHT);
-        new Pieces(blackKnight2, false, 6, 0, TypePiece.KNIGHT);
-        new Pieces(blackBishop1, false, 2, 0, TypePiece.BISHOP);
-        new Pieces(blackBishop2, false, 5, 0, TypePiece.BISHOP);
-        new Pieces(blackQueen, false, 3, 0, TypePiece.QUEEN);
-        new Pieces(blackKing, false, 4, 0, TypePiece.KING);
+        movesTxt.setText("ee");
 
-        new Pieces(whiteRoof1, true, 0, 7, TypePiece.ROOF);
-        new Pieces(whiteRoof2, true, 7, 7, TypePiece.ROOF);
-        new Pieces(whiteKnight1, true, 1, 7, TypePiece.KNIGHT);
-        new Pieces(whiteKnight2, true, 6, 7, TypePiece.KNIGHT);
-        new Pieces(whiteBishop1, true, 2, 7, TypePiece.BISHOP);
-        new Pieces(whiteBishop2, true, 5, 7, TypePiece.BISHOP);
-        new Pieces(whiteQueen, true, 3, 7, TypePiece.QUEEN);
-        new Pieces(whiteKing, true, 4, 7, TypePiece.KING);
+        new Roof("Black Roof 1", blackRoof1, false, 0, 0);
+        new Roof("Black Roof 2", blackRoof2, false, 7, 0);
+        new Knight("Black Knight 1", blackKnight1, false, 1, 0);
+        new Knight("Black Knight 2", blackKnight2, false, 6, 0);
+        new Bishop("Black Bishop 1", blackBishop1, false, 2, 0);
+        new Bishop("Black Bishop 2", blackBishop2, false, 5, 0);
+        new Queen("Black Queen", blackQueen, false, 3, 0);
+        new King("Black King", blackKing, false, 4, 0);
 
-        new Pieces(blackPawn1, false, 0, 1, TypePiece.BLACK_PAWN);
-        new Pieces(blackPawn2, false, 1, 1, TypePiece.BLACK_PAWN);
-        new Pieces(blackPawn3, false, 2, 1, TypePiece.BLACK_PAWN);
-        new Pieces(blackPawn4, false, 3, 1, TypePiece.BLACK_PAWN);
-        new Pieces(blackPawn5, false, 4, 1, TypePiece.BLACK_PAWN);
-        new Pieces(blackPawn6, false, 5, 1, TypePiece.BLACK_PAWN);
-        new Pieces(blackPawn7, false, 6, 1, TypePiece.BLACK_PAWN);
-        new Pieces(blackPawn8, false, 7, 1, TypePiece.BLACK_PAWN);
+        new Roof("White Roof 1", whiteRoof1, true, 0, 7);
+        new Roof("White Roof 2", whiteRoof2, true, 7, 7);
+        new Knight("White Knight 1", whiteKnight1, true, 1, 7);
+        new Knight("White Knight 2", whiteKnight2, true, 6, 7);
+        new Bishop("White Bishop 1", whiteBishop1, true, 2, 7);
+        new Bishop("White Bishop 2", whiteBishop2, true, 5, 7);
+        new Queen("White Queen", whiteQueen, true, 3, 7);
+        new King("White King", whiteKing, true, 4, 7);
 
-        new Pieces(whitePawn1, true, 0, 6, TypePiece.WHITE_PAWN);
-        new Pieces(whitePawn2, true, 1, 6, TypePiece.WHITE_PAWN);
-        new Pieces(whitePawn3, true, 2, 6, TypePiece.WHITE_PAWN);
-        new Pieces(whitePawn4, true, 3, 6, TypePiece.WHITE_PAWN);
-        new Pieces(whitePawn5, true, 4, 6, TypePiece.WHITE_PAWN);
-        new Pieces(whitePawn6, true, 5, 6, TypePiece.WHITE_PAWN);
-        new Pieces(whitePawn7, true, 6, 6, TypePiece.WHITE_PAWN);
-        new Pieces(whitePawn8, true, 7, 6, TypePiece.WHITE_PAWN);
+        new BlackPawn("Black Pawn 1", blackPawn1, false, 0, 1);
+        new BlackPawn("Black Pawn 2", blackPawn2, false, 1, 1);
+        new BlackPawn("Black Pawn 3", blackPawn3, false, 2, 1);
+        new BlackPawn("Black Pawn 4", blackPawn4, false, 3, 1);
+        new BlackPawn("Black Pawn 5", blackPawn5, false, 4, 1);
+        new BlackPawn("Black Pawn 6", blackPawn6, false, 5, 1);
+        new BlackPawn("Black Pawn 7", blackPawn7, false, 6, 1);
+        new BlackPawn("Black Pawn 8", blackPawn8, false, 7, 1);
+
+        new WhitePawn("White Pawn 1", whitePawn1, true, 0, 6);
+        new WhitePawn("White Pawn 2", whitePawn2, true, 1, 6);
+        new WhitePawn("White Pawn 3", whitePawn3, true, 2, 6);
+        new WhitePawn("White Pawn 4", whitePawn4, true, 3, 6);
+        new WhitePawn("White Pawn 5", whitePawn5, true, 4, 6);
+        new WhitePawn("White Pawn 6", whitePawn6, true, 5, 6);
+        new WhitePawn("White Pawn 7", whitePawn7, true, 6, 6);
+        new WhitePawn("White Pawn 8", whitePawn8, true, 7, 6);
 
         board = new Rectangle[]{rect00, rect02, rect04, rect06, rect11, rect13, rect15, rect17, rect20, rect22, rect24, rect26, rect31, rect33, rect35, rect37, rect40, rect42, rect44, rect46, rect51, rect53, rect55, rect57, rect60, rect62, rect64, rect66, rect71, rect73, rect75, rect77,
                 rect01, rect03, rect05, rect07, rect10, rect12, rect14, rect16, rect21, rect23, rect25, rect27, rect30, rect32, rect34, rect36, rect41, rect43, rect45, rect47, rect50, rect52, rect54, rect56, rect61, rect63, rect65, rect67, rect70, rect72, rect74, rect76};
@@ -254,6 +257,7 @@ public class Controller implements Initializable {
                 piece.changePosition(e.getSceneX(), e.getSceneY());
                 allPieces.getChildren().remove(isPieceInSameCase(piece));
                 isPlace = true;
+                if(piece.isFirstMove()) piece.setFirstMove();
                 changePlayer();
             }
         }
