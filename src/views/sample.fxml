@@ -236,4 +236,14 @@
      </content>
    </ScrollPane>
    <Button fx:id="undoButton" layoutX="633.0" layoutY="394.0" mnemonicParsing="false" text="Undo" />
+   <TitledPane fx:id="checkPane" animated="false" collapsible="false" layoutX="180.0" layoutY="195.0" prefHeight="140.0" prefWidth="220.0" text="Check !" visible="true">
+      <content>
+         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+               <Label fx:id="checkTxt" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="17.0" prefWidth="200.0" text="Check to the King ! " />
+               <Button fx:id="paneCheckButton" layoutX="85.0" layoutY="70.0" mnemonicParsing="false" text="Close" />
+            </children>
+         </AnchorPane>
+      </content>
+   </TitledPane>
 </AnchorPane>

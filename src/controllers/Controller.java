@@ -18,9 +18,7 @@ import views.pieces.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class Controller implements Initializable {
     @FXML
@@ -44,13 +42,11 @@ public class Controller implements Initializable {
     @FXML
     private Group allPieces;
     @FXML
-    private Label player, labelTimeWhite, labelTimeBlack, gameStartTxt, blitzTxt;
+    private Label player, labelTimeWhite, labelTimeBlack, gameStartTxt, blitzTxt, movesTxt, checkTxt;
     @FXML
-    private Label movesTxt;
+    private Button normalButton, blitzButton, paneBlitzButton, undoButton, paneCheckButton;
     @FXML
-    private Button normalButton, blitzButton, paneBlitzButton, undoButton;
-    @FXML
-    private TitledPane blitzOver;
+    private TitledPane blitzOver, checkPane;
 
     private static Rectangle[] board;
     private static boolean isPlayerWhiteTurn, blitzMode, gameStart, gameOver;
@@ -58,12 +54,14 @@ public class Controller implements Initializable {
     private static int timerWhite, timerBlack, oldTimerWhite, oldTimerBlack;
     private static Main cls;
     private static Method restart;
+    private King blackKingPiece, whiteKingPiece;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         isPlayerWhiteTurn = true;
         rectPoint.setVisible(false);
         blitzOver.setVisible(false);
+        checkPane.setVisible(false);
 
         whiteTime = new Timer();
         blackTime = new Timer();
@@ -84,7 +82,7 @@ public class Controller implements Initializable {
         new Bishop("Black Bishop 1", blackBishop1, false, 2, 0);
         new Bishop("Black Bishop 2", blackBishop2, false, 5, 0);
         new Queen("Black Queen", blackQueen, false, 3, 0);
-        new King("Black King", blackKing, false, 4, 0);
+        blackKingPiece = new King("Black King", blackKing, false, 4, 0);
 
         new Roof("White Roof 1", whiteRoof1, true, 0, 7);
         new Roof("White Roof 2", whiteRoof2, true, 7, 7);
@@ -93,7 +91,7 @@ public class Controller implements Initializable {
         new Bishop("White Bishop 1", whiteBishop1, true, 2, 7);
         new Bishop("White Bishop 2", whiteBishop2, true, 5, 7);
         new Queen("White Queen", whiteQueen, true, 3, 7);
-        new King("White King", whiteKing, true, 4, 7);
+        whiteKingPiece = new King("White King", whiteKing, true, 4, 7);
 
         new BlackPawn("Black Pawn 1", blackPawn1, false, 0, 1);
         new BlackPawn("Black Pawn 2", blackPawn2, false, 1, 1);
@@ -144,6 +142,10 @@ public class Controller implements Initializable {
             } catch (IllegalAccessException | InvocationTargetException ex) {
                 ex.printStackTrace();
             }
+        });
+
+        paneCheckButton.setOnAction(e -> {
+            checkPane.setVisible(false);
         });
 
         undoButton.setOnAction(e -> {
@@ -278,6 +280,7 @@ public class Controller implements Initializable {
                 isPlace = true;
                 if(piece.isFirstMove()) piece.setFirstMove();
                 movesTxt.setText(Pieces.getListMove() + "\n" + movesTxt.getText());
+                isCheck();
                 changePlayer();
             }
         }
@@ -293,5 +296,23 @@ public class Controller implements Initializable {
             }
         }
         return null;
+    }
+    private void isCheck(){
+        Double[] lastPieceGetMoves = Pieces.getLastPieceMove().getPossibleMove();
+        King pieceCheck = (Pieces.getLastPieceMove().isWhite()) ? blackKingPiece : whiteKingPiece;
+        for (double pieceMove : lastPieceGetMoves) {
+            if (pieceCheck.getPositionX() + (double) pieceCheck.getPositionY() / 10 == pieceMove){
+                checkPane.setVisible(true);
+                checkTxt.setText("Check to the " + ((pieceCheck.isWhite()) ? "White" : "Black") + " King !");
+                movesTxt.setText("Check to the " + ((pieceCheck.isWhite()) ? "White" : "Black") + " King !\n" + movesTxt.getText());
+            }
+        }
+        /*
+        List<Double> listMove = new ArrayList<>();
+        for (Pieces piece : Pieces.getPiecesList()){
+            listMove.addAll(Arrays.asList(piece.getPossibleMove()));
+        }
+         */
+
     }
 }
