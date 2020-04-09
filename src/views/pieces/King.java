@@ -10,6 +10,10 @@ public class King extends Pieces{
         super(name, imgView, colorWhite, posX, posY);
     }
 
+    public void setIsFirstMove() {
+        this.isFirstMove = true;
+    }
+
     @Override
     public Double[] getPossibleMove() {
         int posX = this.positionX;

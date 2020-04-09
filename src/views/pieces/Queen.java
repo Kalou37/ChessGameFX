@@ -51,9 +51,9 @@ public class Queen extends Pieces{
             if(pieceInSameCase(posX-i, posY+i)) break;
         }
         for (int i = 1; i < 8; i++) {
-            if(pieceInSameCaseAndSameColor(posX-i, posY-i)) break;
+            if(pieceInSameCaseAndSameColor(posX+i, posY-i)) break;
             if(posX + i < 8 && posY - i >= 0) valueReturn.add((double) posX + i + ((double) (posY - i) / 10));
-            if(pieceInSameCase(posX-i, posY-i)) break;
+            if(pieceInSameCase(posX+i, posY-i)) break;
         }
         Double[] array = new Double[valueReturn.size()];
         array = valueReturn.toArray(array);

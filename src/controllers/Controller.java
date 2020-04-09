@@ -48,14 +48,14 @@ public class Controller implements Initializable {
     @FXML
     private Label movesTxt;
     @FXML
-    private Button normalButton, blitzButton, paneBlitzButton;
+    private Button normalButton, blitzButton, paneBlitzButton, undoButton;
     @FXML
     private TitledPane blitzOver;
 
     private static Rectangle[] board;
     private static boolean isPlayerWhiteTurn, blitzMode, gameStart, gameOver;
     private static Timer whiteTime, blackTime;
-    private static int timerWhite, timerBlack;
+    private static int timerWhite, timerBlack, oldTimerWhite, oldTimerBlack;
     private static Main cls;
     private static Method restart;
 
@@ -75,7 +75,7 @@ public class Controller implements Initializable {
         timerWhite = -1;
         timerBlack = -1;
 
-        movesTxt.setText("ee");
+        movesTxt.setText("");
 
         new Roof("Black Roof 1", blackRoof1, false, 0, 0);
         new Roof("Black Roof 2", blackRoof2, false, 7, 0);
@@ -146,6 +146,23 @@ public class Controller implements Initializable {
             }
         });
 
+        undoButton.setOnAction(e -> {
+            Pieces lastPiece = Pieces.getLastPieceMove();
+            Pieces.setIsUndo(true);
+            lastPiece.changePosition((double) lastPiece.getOldPositionX() * 70, (double) lastPiece.getOldPositionY() * 70);
+            movesTxt.setText("Undo" + Pieces.getListMove() + "\n" + movesTxt.getText());
+            if(isPlayerWhiteTurn) {
+                timerWhite = oldTimerWhite;
+                labelTimeWhite.setText(convertTime(timerWhite));
+            }
+            else {
+                timerBlack = oldTimerBlack;
+                labelTimeBlack.setText(convertTime(timerBlack));
+            }
+            if(lastPiece instanceof King) ((King) lastPiece).setIsFirstMove();
+            changePlayer();
+        });
+
         paneBlitzButton.setOnAction(e -> blitzOver.setVisible(false));
     }
 
@@ -158,6 +175,7 @@ public class Controller implements Initializable {
 
     public void setTime() {
         if (isPlayerWhiteTurn) {
+            oldTimerWhite = timerWhite;
             whiteTime = new Timer();
             whiteTime.scheduleAtFixedRate(new TimerTask() {
                 @Override
@@ -169,6 +187,7 @@ public class Controller implements Initializable {
                 }
             }, 0, 1000);
         } else {
+            oldTimerBlack = timerBlack;
             blackTime = new Timer();
             blackTime.scheduleAtFixedRate(new TimerTask() {
                 @Override
@@ -258,6 +277,7 @@ public class Controller implements Initializable {
                 allPieces.getChildren().remove(isPieceInSameCase(piece));
                 isPlace = true;
                 if(piece.isFirstMove()) piece.setFirstMove();
+                movesTxt.setText(Pieces.getListMove() + "\n" + movesTxt.getText());
                 changePlayer();
             }
         }

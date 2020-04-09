@@ -217,10 +217,23 @@
             <Button fx:id="paneBlitzButton" layoutX="85.0" layoutY="70.0" mnemonicParsing="false" text="Close" />
         </AnchorPane>
     </TitledPane>
-   <Label fx:id="movesTxt" alignment="TOP_LEFT" layoutX="570.0" layoutY="256.0" prefHeight="70.0" prefWidth="180.0" textAlignment="CENTER" wrapText="true" />
    <Label contentDisplay="CENTER" layoutX="620.0" layoutY="235.0" text="Last moves :" textAlignment="CENTER">
       <font>
          <Font size="15.0" />
       </font>
    </Label>
+   <ScrollPane fitToWidth="true" layoutX="565.0" layoutY="255.0" prefHeight="130.0" prefWidth="190.0">
+     <content>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="190.0">
+            <children>
+               <Label fx:id="movesTxt" alignment="TOP_LEFT" prefWidth="190.0" wrapText="true">
+                  <font>
+                     <Font size="11.0" />
+                  </font>
+               </Label>
+            </children>
+         </AnchorPane>
+     </content>
+   </ScrollPane>
+   <Button fx:id="undoButton" layoutX="633.0" layoutY="394.0" mnemonicParsing="false" text="Undo" />
 </AnchorPane>
